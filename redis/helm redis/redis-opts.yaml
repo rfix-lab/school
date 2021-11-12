@@ -1,0 +1,29 @@
+global:
+  redis:
+    password: "blablacar"
+
+master:
+  persistence:
+    enabled: false
+  service:
+    type: LoadBalancer
+    annotations: 
+      kubernetes.io/ingress.class: alb
+      alb.ingress.kubernetes.io/scheme: internal 
+
+slave:
+  persistence:
+    enabled: false
+  service:
+    type: LoadBalancer
+    annotations:
+      kubernetes.io/ingress.class: alb
+      alb.ingress.kubernetes.io/scheme: internal
+
+sentinel:
+  enabled: true
+  service:
+    type: LoadBalancer
+    annotations: 
+      kubernetes.io/ingress.class: alb
+      alb.ingress.kubernetes.io/scheme: internal
